@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -32,47 +32,47 @@ int main()
 
     //
     // test 1
-    arma::vec x_1 = arma::ones(2,1);
+    optim::ColVec_t x_1 = BMO_MATOPS_ONE_COLVEC(2);
 
-    arma::mat hess_mat_1 = optim::numerical_hessian(x_1,nullptr,unconstr_test_fn_1,nullptr);
+    optim::Mat_t hess_mat_1 = optim::numerical_hessian(x_1,nullptr,unconstr_test_fn_1,nullptr);
 
-    arma::cout << "hessian 1:\n" << hess_mat_1 << arma::endl;
+    BMO_MATOPS_COUT << "hessian 1:\n" << hess_mat_1 << BMO_MATOPS_ENDL;
 
     //
     // test 2
 
-    arma::vec x_2 = arma::ones(2,1);
+    optim::ColVec_t x_2 = BMO_MATOPS_ONE_COLVEC(2);
 
-    arma::mat hess_mat_2 = optim::numerical_hessian(x_2,nullptr,unconstr_test_fn_2,nullptr);
+    optim::Mat_t hess_mat_2 = optim::numerical_hessian(x_2,nullptr,unconstr_test_fn_2,nullptr);
 
-    arma::cout << "hessian 2:\n" << hess_mat_2 << arma::endl;
+    BMO_MATOPS_COUT << "hessian 2:\n" << hess_mat_2 << BMO_MATOPS_ENDL;
 
     //
     // test 3
 
-    arma::vec x_3 = arma::ones(2,1);
+    optim::ColVec_t x_3 = BMO_MATOPS_ONE_COLVEC(2);
 
-    arma::mat hess_mat_3 = optim::numerical_hessian(x_3,nullptr,unconstr_test_fn_3,nullptr);
+    optim::Mat_t hess_mat_3 = optim::numerical_hessian(x_3,nullptr,unconstr_test_fn_3,nullptr);
 
-    arma::cout << "hessian 3:\n" << hess_mat_3 << arma::endl;
+    BMO_MATOPS_COUT << "hessian 3:\n" << hess_mat_3 << BMO_MATOPS_ENDL;
 
     //
     // test 4
 
-    arma::vec x_4 = arma::ones(2,1);
+    optim::ColVec_t x_4 = BMO_MATOPS_ONE_COLVEC(2);
 
-    arma::mat hess_mat_4 = optim::numerical_hessian(x_4,nullptr,unconstr_test_fn_4,nullptr);
+    optim::Mat_t hess_mat_4 = optim::numerical_hessian(x_4,nullptr,unconstr_test_fn_4,nullptr);
 
-    arma::cout << "hessian 4:\n" << hess_mat_4 << arma::endl;
+    BMO_MATOPS_COUT << "hessian 4:\n" << hess_mat_4 << BMO_MATOPS_ENDL;
 
     //
     // test 5
 
-    arma::vec x_5 = arma::ones(2,1);
+    optim::ColVec_t x_5 = BMO_MATOPS_ONE_COLVEC(2);
 
-    arma::mat hess_mat_5 = optim::numerical_hessian(x_5,nullptr,unconstr_test_fn_5,nullptr);
+    optim::Mat_t hess_mat_5 = optim::numerical_hessian(x_5,nullptr,unconstr_test_fn_5,nullptr);
 
-    arma::cout << "hessian 5:\n" << hess_mat_5 << arma::endl;
+    BMO_MATOPS_COUT << "hessian 5:\n" << hess_mat_5 << BMO_MATOPS_ENDL;
 
     //
 

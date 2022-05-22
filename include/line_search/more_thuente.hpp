@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -27,10 +27,46 @@
 #ifndef _optim_more_thuente_HPP
 #define _optim_more_thuente_HPP
 
-double line_search_mt(double step, arma::vec& x, arma::vec& grad, const arma::vec& direc, const double* wolfe_cons_1_inp, const double* wolfe_cons_2_inp, std::function<double (const arma::vec& vals_inp, arma::vec* grad_out, void* opt_data)> opt_objfn, void* opt_data);
+namespace internal
+{
+
+fp_t
+line_search_mt(
+    fp_t step, 
+    ColVec_t& x, 
+    ColVec_t& grad, 
+    const ColVec_t& direc, 
+    const fp_t* wolfe_cons_1_inp, 
+    const fp_t* wolfe_cons_2_inp, 
+    std::function<fp_t (const ColVec_t& vals_inp, ColVec_t* grad_out, void* opt_data)> opt_objfn, 
+    void* opt_data
+);
 
 // update the 'interval of uncertainty'
-uint_t mt_step(double& st_best, double& f_best, double& d_best, double& st_other, double& f_other, double& d_other, double& step, double& f_step, double& d_step, bool& bracket, double step_min, double step_max);
-double mt_sup_norm(const double a, const double b, const double c);
+
+uint_t 
+mt_step(
+    fp_t& st_best, 
+    fp_t& f_best, 
+    fp_t& d_best, 
+    fp_t& st_other, 
+    fp_t& f_other, 
+    fp_t& d_other, 
+    fp_t& step, 
+    fp_t& f_step, 
+    fp_t& d_step, 
+    bool& bracket, 
+    fp_t step_min, 
+    fp_t step_max
+);
+
+fp_t 
+mt_sup_norm(
+    const fp_t a, 
+    const fp_t b, 
+    const fp_t c
+);
+
+}
 
 #endif

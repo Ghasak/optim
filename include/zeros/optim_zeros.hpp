@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -18,16 +18,10 @@
   ##
   ################################################################################*/
 
-/*
- * unit vector
- */
+#ifndef OPTIMLIB_ZEROS_INCLUDES
+#define OPTIMLIB_ZEROS_INCLUDES
 
-inline
-arma::vec
-unit_vec(const size_t j, const size_t n)
-{
-    arma::vec ret = arma::zeros(n,1);
-    ret(j) = 1;
+#include "broyden.hpp"
+#include "broyden_df.hpp"
 
-    return ret;
-}
+#endif

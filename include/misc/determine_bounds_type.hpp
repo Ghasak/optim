@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -17,25 +17,28 @@
   ##   limitations under the License.
   ##
   ################################################################################*/
- 
+
 /*
  * Determine the upper-lower bounds combo type
  */
 
-// note: std::isfinite is not true for: NaN, - Inf, or + Inf
+// note: std::isfinite is not true for NaN, - Inf, or + Inf
 
 inline
-arma::uvec
-determine_bounds_type(const bool vals_bound, const size_t n_vals, const arma::vec& lower_bounds, const arma::vec& upper_bounds)
+ColVecInt_t
+determine_bounds_type(
+    const bool vals_bound, 
+    const size_t n_vals, 
+    const ColVec_t& lower_bounds, 
+    const ColVec_t& upper_bounds
+)
 {
-    arma::uvec ret_vec(n_vals);
+    ColVecInt_t ret_vec(n_vals);
 
-    ret_vec.fill(1); // base case: 1 - no bounds imposed
+    BMO_MATOPS_SET_VALUES_SCALAR(ret_vec, 1); // base case: 1 - no bounds imposed
 
-    if (vals_bound)
-    {
-        for (size_t i=0; i < n_vals; i++)
-        {
+    if (vals_bound) {
+        for (size_t i = 0; i < n_vals; ++i) {
             if ( std::isfinite(lower_bounds(i)) && std::isfinite(upper_bounds(i)) ) {
                 // lower and upper bound imposed
                 ret_vec(i) = 4;

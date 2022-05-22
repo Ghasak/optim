@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -18,15 +18,15 @@
   ##
   ################################################################################*/
 
-/*
- * unit vector
- */
+#ifndef OPTIMLIB_STATS_SEED_VALUES
+#define OPTIMLIB_STATS_SEED_VALUES
 
-#ifndef _optim_unit_vec_HPP
-#define _optim_unit_vec_HPP
-
-inline arma::vec unit_vec(const size_t j, const size_t n);
-
-#include "unit_vec.ipp"
+inline
+size_t
+generate_seed_value(const int ind_inp, const int n_threads, rand_engine_t& rand_engine)
+{
+    return static_cast<size_t>( (bmo_stats::runif<fp_t>(rand_engine) + ind_inp + n_threads) * 1000 );
+    // return static_cast<size_t>( (ind_inp + n_threads) * 1000 );
+}
 
 #endif

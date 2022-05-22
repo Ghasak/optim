@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -25,32 +25,25 @@
 
 namespace optim
 {
-    // structs
-    #include "misc/optim_structs.hpp"
+    #include "BaseMatrixOps/include/BaseMatrixOps.hpp"
 
-    // misc files
-    #include "misc/misc.hpp"
+    // misc/utility files
+    #include "misc/optim_misc.hpp"
+
+    // stats/rng files
+    #include "stats/optim_stats.hpp"
 
     // line search
     #include "line_search/more_thuente.hpp"
 
     // unconstrained optimization
-    #include "unconstrained/bfgs.hpp"
-    #include "unconstrained/lbfgs.hpp"
-    #include "unconstrained/newton.hpp"
-    #include "unconstrained/cg.hpp"
-    #include "unconstrained/gd.hpp"
-    #include "unconstrained/de.hpp"
-    #include "unconstrained/de_prmm.hpp"
-    #include "unconstrained/nm.hpp"
-    #include "unconstrained/pso.hpp"
-    #include "unconstrained/pso_dv.hpp"
+    #include "unconstrained/optim_unconstrained.hpp"
 
     // constrained optimization
     #include "constrained/sumt.hpp"
 
     // solving systems of nonlinear equations
-    #include "zeros/broyden.hpp"
+    #include "zeros/optim_zeros.hpp"
 }
 
 #endif

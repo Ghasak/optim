@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -18,10 +18,9 @@
   ##
   ################################################################################*/
 
-#include "determine_bounds_type.hpp"
-#include "error_reporting.hpp"
-#include "jacobian_adjust.hpp"
-#include "numerical_gradient.hpp"
-#include "numerical_hessian.hpp"
-#include "transform_vals.hpp"
-#include "unit_vec.hpp"
+#ifndef OPTIMLIB_STATS_INCLUDES
+#define OPTIMLIB_STATS_INCLUDES
+
+#include "seed_values.hpp"
+
+#endif

@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -24,9 +24,9 @@
 namespace unconstr_test_sols
 {
 
-arma::vec test_1()
+ColVec_t test_1()
 {
-    arma::vec ret(2);
+    ColVec_t ret(2);
 
     ret(0) = 2.25;
     ret(1) = -4.75;
@@ -36,23 +36,23 @@ arma::vec test_1()
 
 //
 
-arma::vec test_2()
+ColVec_t test_2()
 {
-    return arma::ones(2,1);
+    return BMO_MATOPS_ONE_COLVEC(2);
 }
 
 //
 
-arma::vec test_3(const int n)
+ColVec_t test_3(const int n)
 {
-    return arma::zeros(n,1);
+    return BMO_MATOPS_ZERO_COLVEC(n);
 }
 
 //
 
-arma::vec test_4()
+ColVec_t test_4()
 {
-    arma::vec ret(2);
+    ColVec_t ret(2);
 
     ret(0) = 3.0;
     ret(1) = 0.5;
@@ -62,9 +62,9 @@ arma::vec test_4()
 
 //
 
-arma::vec test_5()
+ColVec_t test_5()
 {
-    arma::vec ret(2);
+    ColVec_t ret(2);
 
     ret(0) = 1.0;
     ret(1) = 3.0;
@@ -74,30 +74,30 @@ arma::vec test_5()
 
 //
 
-arma::vec test_6()
+ColVec_t test_6()
 {
-    return arma::zeros(2,1);
+    return BMO_MATOPS_ZERO_COLVEC(2);
 }
 
 //
 
-arma::vec test_7()
+ColVec_t test_7()
 {
-    return arma::zeros(2,1);
+    return BMO_MATOPS_ZERO_COLVEC(2);
 }
 
 //
 
-arma::vec test_8()
+ColVec_t test_8()
 {
-    return arma::ones(2,1);
+    return BMO_MATOPS_ONE_COLVEC(2);
 }
 
 //
 
-arma::vec test_9()
+ColVec_t test_9()
 {
-    arma::vec ret(2);
+    ColVec_t ret(2);
 
     ret(0) = -10.0;
     ret(1) =   1.0;

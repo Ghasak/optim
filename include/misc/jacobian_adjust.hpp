@@ -1,6 +1,6 @@
 /*################################################################################
   ##
-  ##   Copyright (C) 2016-2018 Keith O'Hara
+  ##   Copyright (C) 2016-2022 Keith O'Hara
   ##
   ##   This file is part of the OptimLib C++ library.
   ##
@@ -23,17 +23,20 @@
  */
 
 inline
-arma::mat
-jacobian_adjust(const arma::vec& vals_trans_inp, const arma::uvec& bounds_type, const arma::vec& lower_bounds, const arma::vec& upper_bounds)
+Mat_t
+jacobian_adjust(
+    const ColVec_t& vals_trans_inp, 
+    const ColVecInt_t& bounds_type, 
+    const ColVec_t& lower_bounds, 
+    const ColVec_t& upper_bounds
+)
 {
-    const size_t n_vals = bounds_type.n_elem;
+    const size_t n_vals = BMO_MATOPS_SIZE(bounds_type);
 
-    arma::mat ret_mat = arma::eye(n_vals,n_vals);
+    Mat_t ret_mat = BMO_MATOPS_EYE(n_vals);
 
-    for (size_t i=0; i < n_vals; i++)
-    {
-        switch (bounds_type(i)) 
-        {
+    for (size_t i = 0; i < n_vals; ++i) {
+        switch (bounds_type(i)) {
             case 2: // lower bound only
                 ret_mat(i,i) = std::exp(vals_trans_inp(i));
                 break;
@@ -41,10 +44,12 @@ jacobian_adjust(const arma::vec& vals_trans_inp, const arma::uvec& bounds_type, 
                 ret_mat(i,i) = std::exp(-vals_trans_inp(i));
                 break;
             case 4: // upper and lower bounds
-                ret_mat(i,i) =  std::exp(vals_trans_inp(i))*(upper_bounds(i) - lower_bounds(i)) / std::pow(std::exp(vals_trans_inp(i)) + 1,2);
+                // ret_mat(i,i) =  std::exp(vals_trans_inp(i))*(upper_bounds(i) - lower_bounds(i)) / std::pow(std::exp(vals_trans_inp(i)) + 1,2);
+                ret_mat(i,i) = std::exp(vals_trans_inp(i)) * (2*eps_dbl + upper_bounds(i) - lower_bounds(i)) \
+                                / (std::exp(2 * vals_trans_inp(i)) + 2*std::exp(vals_trans_inp(i)) + 1);
                 break;
         }
     }
-    //
+
     return ret_mat;
 }
